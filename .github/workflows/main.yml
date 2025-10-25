@@ -15,4 +15,14 @@ jobs:
 
      - name: run bash command
        run: ls -al
+
+     - name: Copy files via SSH
+       uses: appleboy/scp-action@v1
+       with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2-USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          port: 22
+          source: ./
+          target: ./
     
